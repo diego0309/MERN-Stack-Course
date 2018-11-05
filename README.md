@@ -1,3 +1,3 @@
 # MERN-Stack-Course
 
-WebApp made to learn MERN stack from traversy media
+WebApp made to learn MERN stack

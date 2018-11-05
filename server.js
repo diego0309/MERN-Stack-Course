@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
 const bodyParser = require("body-parser");
 const app = express();
+const passport = require("passport");
 
 const posts = require("./routes/api/posts");
 const profile = require("./routes/api/profile");
@@ -19,11 +20,16 @@ mongoose
   })
   .catch(err => console.log(err));
 
+//Use Routes
 app.use("/api/profile", profile);
 app.use("/api/users", users);
 app.use("/api/posts", posts);
 
-app.get("/", (req, res) => res.send("Hello"));
+//Passport middleware
+app.use(passport.initialize());
+
+// Passport config
+require("./config/passport")(passport);
 
 const port = process.env.PORT || 5000;
 
